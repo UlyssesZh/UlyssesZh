@@ -1,0 +1,12 @@
+name: Clear camo cache
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  clear:
+    runs-on: ubuntu-latest
+    steps:
+      - name: action-camo-purge
+        uses: kevincobain2000/action-camo-purge@v1
