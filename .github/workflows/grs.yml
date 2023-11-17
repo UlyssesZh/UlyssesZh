@@ -1,0 +1,80 @@
+name: GitHub Readme Stats
+on:
+  workflow_dispatch:
+  schedule:
+  - cron: 0 * * * *
+
+jobs:
+  generate-stats:
+    strategy:
+      matrix:
+        theme: [light, dark]
+    permissions: write-all
+    runs-on: ubuntu-latest
+    name: Generate stats cards
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Generate stats-${{ matrix.theme }}
+        uses: Zo-Bro-23/grs-action@v0
+        id: generate
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          options: username=${{ github.repository_owner }}&show_icons=true&count_private=true&hide_title=true&include_all_commits=true&hide_rank=true&number_format=long&hide_title=true&show=discussion_started&hide_border=true&disable_animations=true&theme=${{ matrix.theme }}
+          path: grs/stats-${{ matrix.theme }}.svg
+      - name: Upload stats-${{ matrix.theme }}
+        uses: actions/upload-artifact@master
+        with:
+          name: stats-${{ matrix.theme }}
+          path: grs
+  generate-top-langs:
+    strategy:
+      matrix:
+        theme: [light, dark]
+    permissions: write-all
+    runs-on: ubuntu-latest
+    name: Generate top language cards
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Generate stats-${{ matrix.theme }}
+        uses: Zo-Bro-23/grs-action@v0
+        id: generate
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          options: username=${{ github.repository_owner }}&layout=compact&hide_title=true&hide=tex%2Chtml&langs_count=16&hide_border=true&disable_animations=true&theme=${{ matrix.theme }}
+          path: grs/top-langs-${{ matrix.theme }}.svg
+      - name: Upload top-langs-${{ matrix.theme }}
+        uses: actions/upload-artifact@master
+        with:
+          name: top-langs-${{ matrix.theme }}
+          path: grs
+  push:
+    permissions: write-all
+    runs-on: ubuntu-latest
+    name: Push
+    needs: [generate-stats, generate-top-langs]
+    steps:
+      - uses: actions/download-artifact@master
+        with:
+          name: stats-dark
+          path: grs
+      - uses: actions/download-artifact@master
+        with:
+          name: stats-light
+          path: grs
+      - uses: actions/download-artifact@master
+        with:
+          name: top-langs-dark
+          path: grs
+      - uses: actions/download-artifact@master
+        with:
+          name: top-langs-light
+          path: grs
+      - name: Push
+        uses: crazy-max/ghaction-github-pages@v3
+        with:
+          target_branch: grs
+          build_dir: grs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
