@@ -14,12 +14,12 @@
 
 <picture>
   <source
-    srcset="https://github-readme-stats.vercel.app/api/top-langs/?username=UlyssesZh&layout=compact&hide_title=true&hide=tex,html&langs_count=16&hide_border=true&theme=dark"
+    srcset="https://github-readme-stats.vercel.app/api/top-langs/?username=UlyssesZh&layout=compact&hide_title=true&hide=tex%2Chtml&langs_count=16&hide_border=true&theme=dark"
     media="(prefers-color-scheme: dark)"
   />
   <source
-    srcset="https://github-readme-stats.vercel.app/api/top-langs/?username=UlyssesZh&layout=compact&hide_title=true&hide=tex,html&langs_count=16&hide_border=true"
+    srcset="https://github-readme-stats.vercel.app/api/top-langs/?username=UlyssesZh&layout=compact&hide_title=true&hide=tex%2Chtml&langs_count=16&hide_border=true"
     media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
   />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=UlyssesZh&layout=compact&hide_title=true&hide=tex,html&langs_count=16&hide_border=true" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=UlyssesZh&layout=compact&hide_title=true&hide=tex%2Chtml&langs_count=16&hide_border=true" />
 </picture>
