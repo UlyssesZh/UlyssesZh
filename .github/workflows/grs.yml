@@ -2,7 +2,7 @@ name: GitHub Readme Stats
 on:
   workflow_dispatch:
   schedule:
-  - cron: 0 * * * *
+  - cron: 11 08 * * *
 
 jobs:
   generate-stats:
@@ -20,7 +20,7 @@ jobs:
         id: generate
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          options: username=${{ github.repository_owner }}&show_icons=true&count_private=true&hide_title=true&include_all_commits=true&number_format=long&hide_title=true&show=discussion_started&hide_border=true&disable_animations=true&theme=${{ matrix.theme }}
+          options: username=${{ github.repository_owner }}&show_icons=true&count_private=true&include_all_commits=true&number_format=long&hide_title=true&hide_rank=true&show=discussions_started,prs_merged&hide_border=true&disable_animations=true&theme=${{ matrix.theme }}
           path: grs/stats-${{ matrix.theme }}.svg
       - name: Upload stats-${{ matrix.theme }}
         uses: actions/upload-artifact@v4
