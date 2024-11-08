@@ -17,7 +17,7 @@ jobs:
     name: Generate stats cards
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Generate stats-${{ matrix.theme }}
         uses: UlyssesZh/grs-action@v0
         id: generate
@@ -41,7 +41,7 @@ jobs:
     name: Generate top language cards
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Generate stats-${{ matrix.theme }}
         uses: UlyssesZh/grs-action@v0
         id: generate
@@ -79,7 +79,7 @@ jobs:
           name: langs-light
           path: grs
       - name: Push
-        uses: crazy-max/ghaction-github-pages@v3
+        uses: crazy-max/ghaction-github-pages@v4
         with:
           target_branch: grs
           build_dir: grs
