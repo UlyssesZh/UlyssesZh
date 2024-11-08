@@ -2,7 +2,10 @@ name: GitHub Readme Stats
 on:
   workflow_dispatch:
   schedule:
-  - cron: 11 08 * * *
+    - cron: 0 * * * *
+  push:
+    branches:
+      - master
 
 jobs:
   generate-stats:
@@ -16,18 +19,20 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Generate stats-${{ matrix.theme }}
-        uses: Zo-Bro-23/grs-action@v0
+        uses: UlyssesZh/grs-action@v0
         id: generate
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          options: username=${{ github.repository_owner }}&show_icons=true&count_private=true&include_all_commits=true&number_format=long&hide_title=true&hide_rank=true&show=discussions_started,prs_merged&hide_border=true&disable_animations=true&theme=${{ matrix.theme }}
+          card: stats
+          options: username=${{ github.repository_owner }}&show_icons=true&count_private=true&hide_title=true&include_all_commits=true&number_format=long&hide_title=true&show=discussion_started&hide_border=true&disable_animations=true&theme=${{ matrix.theme }}
           path: grs/stats-${{ matrix.theme }}.svg
+        env:
+          PAT_1: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload stats-${{ matrix.theme }}
         uses: actions/upload-artifact@v4
         with:
           name: stats-${{ matrix.theme }}
           path: grs
-  generate-top-langs:
+  generate-langs:
     strategy:
       matrix:
         theme: [light, dark]
@@ -38,23 +43,24 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Generate stats-${{ matrix.theme }}
-        uses: Zo-Bro-23/grs-action@v0
+        uses: UlyssesZh/grs-action@v0
         id: generate
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
           options: username=${{ github.repository_owner }}&layout=compact&hide_title=true&hide=tex,html&langs_count=16&hide_border=true&disable_animations=true&theme=${{ matrix.theme }}
-          path: grs/top-langs-${{ matrix.theme }}.svg
-          card: top-langs
-      - name: Upload top-langs-${{ matrix.theme }}
+          path: grs/langs-${{ matrix.theme }}.svg
+          card: langs
+        env:
+          PAT_1: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload langs-${{ matrix.theme }}
         uses: actions/upload-artifact@v4
         with:
-          name: top-langs-${{ matrix.theme }}
+          name: langs-${{ matrix.theme }}
           path: grs
   push:
     permissions: write-all
     runs-on: ubuntu-latest
     name: Push
-    needs: [generate-stats, generate-top-langs]
+    needs: [generate-stats, generate-langs]
     steps:
       - uses: actions/download-artifact@v4
         with:
@@ -66,11 +72,11 @@ jobs:
           path: grs
       - uses: actions/download-artifact@v4
         with:
-          name: top-langs-dark
+          name: langs-dark
           path: grs
       - uses: actions/download-artifact@v4
         with:
-          name: top-langs-light
+          name: langs-light
           path: grs
       - name: Push
         uses: crazy-max/ghaction-github-pages@v3

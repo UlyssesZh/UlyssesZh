@@ -14,12 +14,12 @@
 
 <picture>
   <source
-    srcset="https://github.com/UlyssesZh/UlyssesZh/raw/grs/top-langs-dark.svg"
+    srcset="https://github.com/UlyssesZh/UlyssesZh/raw/grs/langs-dark.svg"
     media="(prefers-color-scheme: dark)"
   />
   <source
-    srcset="https://github.com/UlyssesZh/UlyssesZh/raw/grs/top-langs-light.svg"
+    srcset="https://github.com/UlyssesZh/UlyssesZh/raw/grs/langs-light.svg"
     media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
   />
-  <img src="https://github.com/UlyssesZh/UlyssesZh/raw/grs/top-langs-light.svg" />
+  <img src="https://github.com/UlyssesZh/UlyssesZh/raw/grs/langs-light.svg" />
 </picture>
