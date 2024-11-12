@@ -19,7 +19,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Generate stats-${{ matrix.theme }}
-        uses: UlyssesZh/grs-action@v0
+        uses: UlyssesZh/grs-action@master
         id: generate
         with:
           card: stats
@@ -41,7 +41,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Generate stats-${{ matrix.theme }}
-        uses: UlyssesZh/grs-action@v0
+        uses: UlyssesZh/grs-action@master
         id: generate
         with:
           options: username=${{ github.repository_owner }}&layout=compact&hide_title=true&hide=tex,html&langs_count=16&hide_border=true&disable_animations=true&theme=${{ matrix.theme }}
