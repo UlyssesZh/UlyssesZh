@@ -11,10 +11,10 @@ I will respond promptly to any issues or pull requests.
     media="(prefers-color-scheme: dark)"
   />
   <source
-    srcset="https://github.com/UlyssesZh/UlyssesZh/raw/grs/stats-light.svg"
+    srcset="https://github.com/UlyssesZh/UlyssesZh/raw/grs/stats-default.svg"
     media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
   />
-  <img src="https://github.com/UlyssesZh/UlyssesZh/raw/grs/stats-light.svg" />
+  <img src="https://github.com/UlyssesZh/UlyssesZh/raw/grs/stats-default.svg" />
 </picture>
 
 <picture>
@@ -23,8 +23,8 @@ I will respond promptly to any issues or pull requests.
     media="(prefers-color-scheme: dark)"
   />
   <source
-    srcset="https://github.com/UlyssesZh/UlyssesZh/raw/grs/langs-light.svg"
+    srcset="https://github.com/UlyssesZh/UlyssesZh/raw/grs/langs-default.svg"
     media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
   />
-  <img src="https://github.com/UlyssesZh/UlyssesZh/raw/grs/langs-light.svg" />
+  <img src="https://github.com/UlyssesZh/UlyssesZh/raw/grs/langs-default.svg" />
 </picture>
