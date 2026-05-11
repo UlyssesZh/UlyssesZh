@@ -58,19 +58,19 @@ jobs:
     name: Push
     needs: [generate-stats, generate-langs]
     steps:
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: stats-dark
           path: grs
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: stats-default
           path: grs
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: langs-dark
           path: grs
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: langs-default
           path: grs
