@@ -16,7 +16,7 @@ jobs:
     name: Generate stats cards
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: Generate stats-${{ matrix.theme }}
         uses: stats-organization/github-readme-stats-action@v1
         id: generate
@@ -38,7 +38,7 @@ jobs:
     name: Generate top language cards
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: Generate stats-${{ matrix.theme }}
         uses: stats-organization/github-readme-stats-action@v1
         id: generate
