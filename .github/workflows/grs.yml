@@ -26,7 +26,7 @@ jobs:
           path: grs/stats-${{ matrix.theme }}.svg
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload stats-${{ matrix.theme }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: stats-${{ matrix.theme }}
           path: grs
@@ -48,7 +48,7 @@ jobs:
           card: top-langs
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload langs-${{ matrix.theme }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: langs-${{ matrix.theme }}
           path: grs
