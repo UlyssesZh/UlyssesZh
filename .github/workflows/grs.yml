@@ -2,7 +2,7 @@ name: GitHub Readme Stats
 on:
   workflow_dispatch:
   schedule:
-    - cron: 0 * * * *
+    - cron: 42 * * * *
   push:
     branches:
       - master
@@ -22,7 +22,7 @@ jobs:
         id: generate
         with:
           card: stats
-          options: username=${{ github.repository_owner }}&show_icons=true&count_private=true&include_all_commits=true&number_format=long&hide_title=true&show=discussions_started&hide_border=true&disable_animations=true&hide_rank=true&theme=${{ matrix.theme }}
+          options: username=${{ github.repository_owner }}&show_icons=true&count_private=true&include_all_commits=true&number_format=long&hide_title=true&show=discussions_started,reviews&hide_border=true&disable_animations=true&hide_rank=true&theme=${{ matrix.theme }}
           path: grs/stats-${{ matrix.theme }}.svg
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload stats-${{ matrix.theme }}
