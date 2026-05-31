@@ -1,0 +1,17 @@
+name: Sync forks
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: 8 11 * * *
+
+jobs:
+  sync-forks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Sync forks
+        run: ./sync-forks.sh
+        env:
+          GH_TOKEN: ${{ secrets.PAT }}
