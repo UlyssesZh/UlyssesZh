@@ -29,7 +29,7 @@ echo "$forks" | while read -r repo; do
 	fi
 
 	echo "Upstream default branch identified as: $upstream_info"
-	if ! gh repo sync "$repo" --branch "$upstream_info"; then
+	if ! gh repo sync "$repo" --branch "$upstream_info" --force; then
 		echo "::error::Failed to sync $repo"
 	fi
 done
